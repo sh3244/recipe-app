@@ -1,8 +1,10 @@
 ### Summary: Include screen shots or a video of your app highlighting its features
 Attached 3 simulator screenshots of the app
 
+![screenshot](Recipe/1.png)
+
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
-For this project, I focused on the requirements being met, and to setup some kind of centralized or syntax-based wrapping and generalization of the data loading and caching. 
+For this project, I focused on the requirements being met, and to setup some kind of centralized or syntax-based wrapping and generalization of the data loading and caching.
 
 ### Time Spent: Approximately how long did you spend working on this project? How did you allocate your time?
 I wanted to finish in one sitting. A few hours. Most of the time was allotted for figuring out how to do the requirements, as I have not delivered any SwiftUI code or iOS 16 runtime yet!
@@ -10,7 +12,7 @@ I wanted to finish in one sitting. A few hours. Most of the time was allotted fo
 ### Trade-offs and Decisions: Did you make any significant trade-offs in your approach?
 I felt somewhat restricted with SwiftUI but it is easy to get started.
 (I always had Injection and hot reloading of compiled Swift - https://github.com/johnno1962/InjectionIII)
- 
+
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
 Testing: I would normally shoot for integration and ui testing in my production environments and department. Code should be tested for weaknesses; generally fallible code needs more tests or rewrite.
 For a compiled project, a lot of testing is actually handled by the compilers and symbolicators (same for optimization). So maintenance wise, keep unit testing to essentials, but do thorough integration testing.
