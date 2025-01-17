@@ -16,7 +16,8 @@ struct RecipeView: View {
                 ProgressView()
                     .onAppear {
                         Task {
-                            localImageURL = await ImageCacheManager.shared.cachedImageURL(for: viewModel.photoURLLarge!)
+                            guard let url = viewModel.photoURLLarge else { return }
+                            localImageURL = await ImageCacheManager.shared.cachedImageURL(for: url)
                         }
                     }
             }
