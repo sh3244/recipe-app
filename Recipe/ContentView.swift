@@ -23,9 +23,22 @@ struct ContentView: View {
             }
         }.onAppear {
             Task {
+                isLoading = true
                 await viewModel.load()
+                withAnimation {
+                    isLoading = false
+                }
             }
-        }
+        }.refreshable {
+            Task {
+                isLoading = true
+                await viewModel.load()
+                // animate opacity 1
+                withAnimation {
+                    isLoading = false
+                }
+            }
+        }.opacity(isLoading ? 0 : 1)
     }
 }
 
