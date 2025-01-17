@@ -1,40 +1,15 @@
 import SwiftUI
 
-struct RecipeView: View {
-    @ObservedObject var viewModel: RecipeViewModel
+struct RecipesView: View {
+    @ObservedObject var viewModel: RecipesViewModel
 
-    @State private var localImageURL: URL?
+    let gridSize: CGFloat = UIScreen.main.bounds.width/2 - 16
 
-    // body of recipe view should be like itunes card
     var body: some View {
-        ZStack {
-            if let localURL = localImageURL, let imageData = try? Data(contentsOf: localURL), let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                ProgressView()
-                    .onAppear {
-                        Task {
-                            localImageURL = await ImageCacheManager.shared.cachedImageURL(for: viewModel.photoURLLarge!)
-                        }
-                    }
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: gridSize, maximum: gridSize), spacing: 10)], spacing: 10) {
+            ForEach(viewModel.recipes, id: \.uuid) { recipe in
+                RecipeView(viewModel: recipe).padding(0).cornerRadius(10).shadow(radius: 5)
             }
-            VStack() {
-                Text(viewModel.name)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(0)
-                    .frame(maxWidth: .infinity, maxHeight: nil, alignment: .bottom)
-                    .background(Color.black.opacity(0.5))
-                Spacer()
-                Text(viewModel.cuisine)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(0)
-                    .frame(maxWidth: .infinity, maxHeight: nil, alignment: .bottom)
-                    .background(Color.black.opacity(0.5))
-            }.padding(0).cornerRadius(10).shadow(radius: 5).font(.headline).foregroundColor(.white)
-        }
+        }.padding(0).lineSpacing(0)
     }
 }
