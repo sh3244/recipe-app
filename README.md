@@ -2,6 +2,8 @@
 Attached 3 simulator screenshots of the app
 
 ![screenshot](Recipe/1.png)
+![screenshot](Recipe/2.png)
+![screenshot](Recipe/3.png)
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
 For this project, I focused on the requirements being met, and to setup some kind of centralized or syntax-based wrapping and generalization of the data loading and caching.
